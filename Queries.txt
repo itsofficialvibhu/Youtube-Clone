@@ -1,0 +1,21 @@
+SELECT User.Full_Name,User.Username From User,Video WHERE User.User_id = Video.User_id AND Video.Video_Title = 'The Weird Story of aayush';
+
+
+
+
+
+
+
+
+
+
+SELECT Video.Video_Title FROM Video,Comment WHERE Video.Video_ID = Comment.Video_ID AND Comment_Text ='Good';
+
+
+
+
+
+
+
+
+SELECT Channel.No_of_Subscribers FROM User,Channel WHERE User.User_ID = Channel.User_ID AND Email_ID = 'ayushbro94184@gmail.com';

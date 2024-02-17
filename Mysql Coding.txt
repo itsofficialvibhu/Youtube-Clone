@@ -1,0 +1,365 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database youtube;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use youtube;
+Database changed
+mysql> create table User(User ID char(20) primarykey,Full Name char(20),Username varchar(20),Password varchar(20),Email ID varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID char(20) primarykey,Full Name char(20),Username varchar(20),Password varchar(' at line 1
+mysql> create table User(User ID char(20) primary key,Full Name char(20),Username varchar(20),Password varchar(20),Email ID varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID char(20) primary key,Full Name char(20),Username varchar(20),Password varchar' at line 1
+mysql> create table User(User ID char(20) PRIMARY KEY,Full Name char(20),Username varchar(20),Password varchar(20),Email ID varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID char(20) PRIMARY KEY,Full Name char(20),Username varchar(20),Password varchar' at line 1
+mysql> create table User(User_ID char(20) PRIMARY KEY,Full_Name char(20),Username varchar(20),Password varchar(20),Email_ID varchar(30));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into User values(101,"Aayush Sharma","Aayush61000","123456_aa","ayushbro94184@gmail.com");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into User values(102,"Vaibhav Gupta","Vaibhav78","78595_vg","211183@juitsolan.in");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into User values(103,"Aganay Sambyal","Aganay65","2332_ag","211183@juitsolan.in");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> drop table User;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table User(User_ID int(20) PRIMARY KEY,Full_Name char(20),Username varchar(20),Password varchar(20),Email_ID varchar(30));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into User values(101,"Aayush Sharma","Aayush61000","123456_aa","ayushbro94184@gmail.com");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into User values(102,"Vaibhav Gupta","Vaibhav78","78595_vg","211183@juitsolan.in");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into User values(103,"Aganay Sambyal","Aganay65","2332_ag","211183@juitsolan.in");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table Video(Video_ID int(20) PRIMARY KEY,Video_Title varchar(30),Video_Description varchar(50),Video_Path varchar(30),User_ID int(20),Upload Date VARCHAR(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR(30))' at line 1
+mysql> create table Video(Video_ID int(20) PRIMARY KEY,Video_Title varchar(30),Video_Description varchar(50),Video_Path varchar(30),User_ID int(20),Upload_Date VARCHAR(30));
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> insert into Video values(1,"The Growing Popularity of hello","subscribe","This Pc",101,"15-Jan-2022");
+ERROR 1406 (22001): Data too long for column 'Video_Title' at row 1
+mysql> insert into Video values(1,"The Growing Popularity hello","subscribe","This Pc",101,"15-Jan-2022");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Video values(1,"The Weird Story of aayush","subscribe","This Pc",102,"14-July-2022");
+ERROR 1062 (23000): Duplicate entry '1' for key 'video.PRIMARY'
+mysql> insert into Video values(2,"The Weird Story of aayush","subscribe","This Pc",102,"14-July-2022");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video values(3,"How world Gamed The System","subscribe","This Pc",102,"14-May-2022");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table Channel(Channel_ID int(20) PRIMARY KEY,Channel_Name varchar(30),No_of_Subscribers varchar(30),User_ID int(30));
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> insert into Channel values(1001,"Aashu Tech","23 Million",101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Channel values(1002,"Vaibhav Tech","20 Million",102);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Channel values(1003,"Aganay TikTok","20 K",103);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table Channel_Subscription(Subscription_ID int(20) PRIMARY KEY,User_ID int(20),Channel_ID int(20));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> insert into Channel_Subscription values(1,101,1001);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Channel_Subscription values(2,102,1002);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Channel_Subscription values(3,103,1003);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table Comment(Comment_ID int(20),Comment_Text varchar(30),Comment_Date_Time varchar(50),User_ID int(20),Video_ID into(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'into(20))' at line 1
+mysql> create table Comment(Comment_ID int(20),Comment_Text varchar(30),Comment_Date_Time varchar(50),User_ID int(20),Video_ID int(20));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> drop table comment;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table Comment(Comment_ID int(20) PRIMARY KEY,Comment_Text varchar(30),Comment_Date_Time varchar(50),User_ID int(20),Video_ID int(20));
+Query OK, 0 rows affected, 3 warnings (0.01 sec)
+
+mysql> insert into Comment Values(1001,"Nice","15-JAN-2022",101,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Comment Values(1002,"Good","16-MAY-2022",102,2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Comment Values(1003,"As Expected","19-DEC-2022",103,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table Video_Like(Like_ID int(20) PRIMARY KEY,User_ID int(20),Video_ID int(20));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> insert into Video_Like values(101,101,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video_Like values(102,102,2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video_Like values(103,103,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table Video_Dislike(Dislike_ID int(20) PRIMARY KEY,User_ID int(20),Video_ID int(20));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> insert into Video_Dislike values(101,101,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video_Dislike values(102,102,2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video_Dislike values(103,103,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table Video_Viewed(View_ID int(20) PRIMARY KEY,User_ID int(20),Video_ID int(20),Date_Time_of_Viewing varchar(30));
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+mysql> insert into Vide_Viewed values(1001,101,1,"15-JAN-2022");
+ERROR 1146 (42S02): Table 'youtube.vide_viewed' doesn't exist
+mysql> insert into Video_Viewed values(1001,101,1,"15-JAN-2022");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Video_Viewed values(1002,102,2,"19-JUNE-2022");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Video_Viewed values(1003,103,3,"31-JULY-2022");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_youtube    |
++----------------------+
+| channel              |
+| channel_subscription |
+| comment              |
+| user                 |
+| video                |
+| video_dislike        |
+| video_like           |
+| video_viewed         |
++----------------------+
+8 rows in set (0.05 sec)
+
+mysql> alter table video ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.18 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Channel ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.06 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Channel_Subscription ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Comment ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Like ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Dislike ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Viewed ADD FOREIGN KEY(User_ID) REFERENCES User(User_ID);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Comment ADD FOREIGN KEY(Video_ID) REFERENCES Video(Video_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Like ADD FOREIGN KEY(Video_ID) REFERENCES Video(Video_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Dislike ADD FOREIGN KEY(Video_ID) REFERENCES Video(Video_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Video_Viewed ADD FOREIGN KEY(Video_ID) REFERENCES Video(Video_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table Channel_Subscription ADD FOREIGN KEY(Chanel_ID) REFERENCES Channel(Channel_ID);
+ERROR 1072 (42000): Key column 'Chanel_ID' doesn't exist in table
+mysql> alter table Channel_Subscription ADD FOREIGN KEY(Channel_ID) REFERENCES Channel(Channel_ID);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from channel;
++------------+---------------+-------------------+---------+
+| Channel_ID | Channel_Name  | No_of_Subscribers | User_ID |
++------------+---------------+-------------------+---------+
+|       1001 | Aashu Tech    | 23 Million        |     101 |
+|       1002 | Vaibhav Tech  | 20 Million        |     102 |
+|       1003 | Aganay TikTok | 20 K              |     103 |
++------------+---------------+-------------------+---------+
+3 rows in set (0.01 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_youtube    |
++----------------------+
+| channel              |
+| channel_subscription |
+| comment              |
+| user                 |
+| video                |
+| video_dislike        |
+| video_like           |
+| video_viewed         |
++----------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from channel_subscription;
++-----------------+---------+------------+
+| Subscription_ID | User_ID | Channel_ID |
++-----------------+---------+------------+
+|               1 |     101 |       1001 |
+|               2 |     102 |       1002 |
+|               3 |     103 |       1003 |
++-----------------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from comment;
++------------+--------------+-------------------+---------+----------+
+| Comment_ID | Comment_Text | Comment_Date_Time | User_ID | Video_ID |
++------------+--------------+-------------------+---------+----------+
+|       1001 | Nice         | 15-JAN-2022       |     101 |        1 |
+|       1002 | Good         | 16-MAY-2022       |     102 |        2 |
+|       1003 | As Expected  | 19-DEC-2022       |     103 |        3 |
++------------+--------------+-------------------+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from user;
++---------+----------------+-------------+-----------+-------------------------+
+| User_ID | Full_Name      | Username    | Password  | Email_ID                |
++---------+----------------+-------------+-----------+-------------------------+
+|     101 | Aayush Sharma  | Aayush61000 | 123456_aa | ayushbro94184@gmail.com |
+|     102 | Vaibhav Gupta  | Vaibhav78   | 78595_vg  | 211183@juitsolan.in     |
+|     103 | Aganay Sambyal | Aganay65    | 2332_ag   | 211183@juitsolan.in     |
++---------+----------------+-------------+-----------+-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from video;
++----------+------------------------------+-------------------+------------+---------+--------------+
+| Video_ID | Video_Title                  | Video_Description | Video_Path | User_ID | Upload_Date  |
++----------+------------------------------+-------------------+------------+---------+--------------+
+|        1 | The Growing Popularity hello | subscribe         | This Pc    |     101 | 15-Jan-2022  |
+|        2 | The Weird Story of aayush    | subscribe         | This Pc    |     102 | 14-July-2022 |
+|        3 | How world Gamed The System   | subscribe         | This Pc    |     102 | 14-May-2022  |
++----------+------------------------------+-------------------+------------+---------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from video_dislike;
++------------+---------+----------+
+| Dislike_ID | User_ID | Video_ID |
++------------+---------+----------+
+|        101 |     101 |        1 |
+|        102 |     102 |        2 |
+|        103 |     103 |        3 |
++------------+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from video_like;k
++---------+---------+----------+
+| Like_ID | User_ID | Video_ID |
++---------+---------+----------+
+|     101 |     101 |        1 |
+|     102 |     102 |        2 |
+|     103 |     103 |        3 |
++---------+---------+----------+
+3 rows in set (0.00 sec)
+
+    -> ;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'k' at line 1
+ERROR:
+No query specified
+
+mysql> select * from video_like;
++---------+---------+----------+
+| Like_ID | User_ID | Video_ID |
++---------+---------+----------+
+|     101 |     101 |        1 |
+|     102 |     102 |        2 |
+|     103 |     103 |        3 |
++---------+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from video_viewed;
++---------+---------+----------+----------------------+
+| View_ID | User_ID | Video_ID | Date_Time_of_Viewing |
++---------+---------+----------+----------------------+
+|    1001 |     101 |        1 | 15-JAN-2022          |
+|    1002 |     102 |        2 | 19-JUNE-2022         |
+|    1003 |     103 |        3 | 31-JULY-2022         |
++---------+---------+----------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT User.Full_Name,User.Username,WHERE User.User_id = Video.Video_id AND Video.Video_Title ='The Weird Story of aayush';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE User.User_id = Video.Video_id AND Video.Video_Title ='The Weird Story of a' at line 1
+mysql> SELECT User.Full_Name,User.Username WHERE User.User_id = Video.Video_id AND Video.Video_Title = 'The Weird Story of aayush';
+ERROR 1109 (42S02): Unknown table 'User' in field list
+mysql> SELECT User.Full_Name,User.Username From User,Video WHERE User.User_id = Video.Video_id AND Video.Video_Title = 'The Weird Story of aayush';
+Empty set (0.00 sec)
+
+mysql> SELECT User.Full_Name,User.Username From User,Video WHERE User.User_id = Video.User_id AND Video.Video_Title = 'The Weird Story of aayush';
++---------------+-----------+
+| Full_Name     | Username  |
++---------------+-----------+
+| Vaibhav Gupta | Vaibhav78 |
++---------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Channel Name,No_of_Subscribers,Comment Text From Channel,User,Comment WHERE User.User_ID = Channel.User_ID AND User.User_ID = Comment.User_ID WHERE Full Name = 'Aayush Sharma';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Full Name = 'Aayush Sharma'' at line 1
+mysql> SELECT Channel_Name,No_of_Subscribers,Commen_Text From Channel,User,Comment WHERE User.User_ID = Channel.User_ID AND User.User_ID = Comment.User_ID WHERE Full Name = 'Aayush Sharma';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Full Name = 'Aayush Sharma'' at line 1
+mysql> SELECT Channel_Name,No_of_Subscribers,Comment_Text From Channel,User,Comment WHERE User.User_ID = Channel.User_ID AND User.User_ID = Comment.User_ID WHERE Full Name = 'Aayush Sharma';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Full Name = 'Aayush Sharma'' at line 1
+mysql> SELECT Channel_Name,No_of_Subscribers,Comment_Text From Channel,User,Comment WHERE User.User_ID = Channel.User_ID AND User.User_ID = Comment.User_ID WHERE Full_Name = 'Aayush Sharma';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Full_Name = 'Aayush Sharma'' at line 1
+m
+mysql> SELECT Video.Video_Title FROM Video,Comment WHERE Video.Video_ID = Comment.Video_ID AND Comment_Text ='Good';
++---------------------------+
+| Video_Title               |
++---------------------------+
+| The Weird Story of aayush |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Channel.No_of_Subscribers FROM User,Channel WHERE User.User_ID = Channel.User_ID AND Email_ID = 'ayushbro94184@gmail.com';
++-------------------+
+| No_of_Subscribers |
++-------------------+
+| 23 Million        |
++-------------------+
+1 row in set (0.00 sec)
